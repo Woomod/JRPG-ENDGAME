@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://b44qw5tkfmrq7"]
+
+[ext_resource type="Texture2D" uid="uid://bnm4cahav25u3" path="res://Gfx/UI stuff/panel4/panel4 frame.png" id="1_iwsvm"]
+[ext_resource type="Texture2D" uid="uid://dmlxuyw8ygiyk" path="res://Gfx/UI stuff/profile/profile frame.png" id="2_np0of"]
+[ext_resource type="Texture2D" uid="uid://4mhaicle03j1" path="res://Gfx/UI stuff/profile/ribbon.png" id="3_b1ode"]
+[ext_resource type="Texture2D" uid="uid://b61hcoer12svl" path="res://Gfx/Spirits/Wild.png" id="4_tswui"]
+
+[node name="StatusScreen" type="Node2D"]
+
+[node name="Panel4Frame" type="Sprite2D" parent="."]
+position = Vector2(969, 562)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("1_iwsvm")
+
+[node name="Physicals" type="Label" parent="Panel4Frame"]
+offset_left = -1029.0
+offset_top = -553.0
+offset_right = -591.0
+offset_bottom = -88.9999
+theme_override_font_sizes/font_size = 50
+text = "Hp: 600 / 600
+Vitality: 15
+Attack: 100
+Magic: 100
+Defense: 100
+Resistance: 100"
+
+[node name="Heaven" type="Label" parent="Panel4Frame"]
+offset_left = -480.0
+offset_top = -560.0
+offset_right = -42.0
+offset_bottom = -58.9999
+theme_override_font_sizes/font_size = 50
+text = "Tp: 200/200
+Wu Wei: 15
+Affliction: 50%
+Critical: 5%
+Evasion: 5%
+Parry: 5%
+Fortitude: 0%"
+
+[node name="Label" type="Label" parent="Panel4Frame"]
+offset_left = -1067.27
+offset_top = 92.7273
+offset_right = -62.2727
+offset_bottom = 496.727
+theme_override_font_sizes/font_size = 50
+text = "Equipment
+Weapon: Broken Sword
+Armor: Golden Spirit Armor
+Accessory: Jade Hairpin
+Accessory: Amulet of Regrets"
+
+[node name="ProfileEmpty" type="Sprite2D" parent="."]
+position = Vector2(1240, 364)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_np0of")
+
+[node name="Ribbon" type="Sprite2D" parent="."]
+position = Vector2(1256, 698)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_b1ode")
+
+[node name="Label" type="Label" parent="Ribbon"]
+offset_left = -397.0
+offset_top = -252.0
+offset_right = 570.0
+offset_bottom = -17.0
+theme_override_font_sizes/font_size = 75
+text = "Charona
+The Bloody Handed Dryad"
+
+[node name="Level, Exp Next" type="Label" parent="Ribbon"]
+offset_left = -372.0
+offset_top = 180.0
+offset_right = 296.0
+offset_bottom = 650.0
+theme_override_font_sizes/font_size = 75
+text = "Level: 40
+Exp: 86500
+Next: 4,100"
+
+[node name="Wild" type="Sprite2D" parent="."]
+position = Vector2(1251, 356)
+scale = Vector2(0.8, 0.833)
+texture = ExtResource("4_tswui")

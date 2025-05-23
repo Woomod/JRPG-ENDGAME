@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://80x38trp18my"]
 
-[ext_resource type="Script" path="res://Scripts/Overworld_Scripts_Character/Character_Move_Interact.gd" id="1_mc050"]
+[ext_resource type="Script" uid="uid://c6banhx1xrag5" path="res://Scripts/Overworld_Scripts_Character/Character_Move_Interact.gd" id="1_mc050"]
 [ext_resource type="Texture2D" uid="uid://b8ecl4nb2s0hg" path="res://Gfx/Jank Test Sprites_Lilly/Ts Sprites.png" id="2_ixsre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3aej"]
