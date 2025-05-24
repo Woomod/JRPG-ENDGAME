@@ -11,7 +11,9 @@ var Movement: bool = false
 
 
 func _physics_process(delta: float) -> void:
-	pass
+	if Movement == true:
+		if event.is_action_pressed("Left"):
+			pass
 
 func _on_collison_box_ready() -> void:
 	Collision_X = get_child(0).shape.size.x
