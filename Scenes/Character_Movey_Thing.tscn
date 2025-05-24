@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://t4u4gx0h2l6f"]
 
-[ext_resource type="Script" path="res://Scripts/Overworld_Scripts_Character/Character_Move_Interact.gd" id="1_sexp2"]
-[ext_resource type="Texture2D" path="res://Gfx/Jank Test Sprites_Lilly/Ts Sprites.png" id="2_omq06"]
+[ext_resource type="Script" uid="uid://coj2cp01hlhu1" path="res://Scripts/Overworld_Scripts_Character/Character_Move_Interact.gd" id="1_sexp2"]
+[ext_resource type="Texture2D" uid="uid://b8ecl4nb2s0hg" path="res://Gfx/Jank Test Sprites_Lilly/Ts Sprites.png" id="2_omq06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3aej"]
 size = Vector2(48, 42)
@@ -244,27 +244,27 @@ shape = SubResource("RectangleShape2D_r7g1b")
 [node name="Move_Input_Timer" type="Timer" parent="."]
 wait_time = 0.05
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Collision_Check_Up" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Check_Up"]
 position = Vector2(0, -40.5)
 shape = SubResource("RectangleShape2D_vwrtn")
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="Collision_Check_Left" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Check_Left"]
 position = Vector2(-51, 0)
 shape = SubResource("RectangleShape2D_qkuco")
 
-[node name="Area2D3" type="Area2D" parent="."]
+[node name="Collision_Check_Down" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Check_Down"]
 position = Vector2(0.5, 39.5)
 shape = SubResource("RectangleShape2D_2qk21")
 
-[node name="Area2D4" type="Area2D" parent="."]
+[node name="Collision_Check_Right" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision_Check_Right"]
 position = Vector2(49.5, 0)
 shape = SubResource("RectangleShape2D_s4cww")
 
