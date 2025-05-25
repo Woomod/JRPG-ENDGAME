@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnej4yi4iub31"]
+
+[ext_resource type="Script" uid="uid://coj2cp01hlhu1" path="res://Scripts/Overworld_Scripts_Character/Character_Move_Interact.gd" id="1_j5xea"]
+[ext_resource type="Texture2D" uid="uid://b61hcoer12svl" path="res://Gfx/Spirits/Wild.png" id="2_7tya0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um66b"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+disable_mode = 1
+collision_layer = 255
+collision_mask = 255
+script = ExtResource("1_j5xea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_um66b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.37091e-06, -3.69164e-06)
+scale = Vector2(0.0617284, 0.0645161)
+texture = ExtResource("2_7tya0")
