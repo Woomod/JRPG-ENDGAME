@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://7kknqg8fsema"]
+
+[ext_resource type="Script" uid="uid://csy4qwcnqgcii" path="res://Butt_Monster.gd" id="1_opk6s"]
+
+[node name="Entity_Base" type="Node2D"]
+script = ExtResource("1_opk6s")
+metadata/_custom_type_script = "uid://o4734k3507yf"
