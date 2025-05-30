@@ -9,6 +9,11 @@ var Encounter_Scene = preload("res://Scenes/Maps/Final Castle 1.tscn").instantia
 var Combatants: Array
 var Player_Characters: Array
 var Monsters: Array
+var Living_Chars: int
+var Everyone_Acted: int:
+	set(Everyone_Acted):
+		if Everyone_Acted == Living_Chars:
+			_Action_Carry_Out_Phase()
 
 #This will handle encounter processing later.
 
@@ -33,7 +38,11 @@ func Random_Encounter_Roll():
 func _Initiative_Calculation():
 	
 	for Character in Player_Characters:
-		Character.Initiative = randi_range(0,15) + Character.Wu_Wei
+		var Initiative_Roll = randi_range(0,15)
+		if Character.Off_Balance == true:
+			Initiative_Roll = 0
+		
+		Character.Initiative = Initiative_Roll + Character.Wu_Wei
 		if Character.Stunned > 0:
 			Character.Initiative /= 2
 		if Character.Haste > 0:
@@ -43,7 +52,9 @@ func _Initiative_Calculation():
 		
 	
 	for Monster in Monsters:
-		Monster.Initiative = randi_range(0,15) + Monster.Wu_Wei
+		var Initiative_Roll = randi_range(0,15)
+		if Monster.Off_Balance == true:
+			Initiative_Roll = 0
 		if Monster.Stunned > 0:
 			Monster.Initiative /= 2
 		if Monster.Haste > 0:
@@ -51,7 +62,7 @@ func _Initiative_Calculation():
 		Combatants.append(Monster)
 	
 	Combatants.sort_custom(_Inititative_Sorter)
-
+	_Action_Select_Phase()
 
 func _Inititative_Sorter(Combatant_1,Combatant_2):
 	if Combatant_1.Initiative > Combatant_2.Initiative:
@@ -71,7 +82,7 @@ func _Ability_Carry_Outer(Effects):
 					Effect.Hit_Result = await Hit_Classifier(Effect.Targets,Effect.User)
 					if Effect.Hit_Result == 0:
 						return
-					
+					_Attack_Damage(Effect.Targets,Effect,Effect.User)
 					
 				
 				
@@ -82,22 +93,7 @@ func _Ability_Carry_Outer(Effects):
 				
 					"Affliction":
 						for Target in Effect.Targets:
-							
-							match await Hit_Classifier(Effect.Targets,Effect.User):
-								
-								0:
-									return
-							
-								1:
-									pass
-							
-								2:
-									pass
-							
-								3:
-									pass
-					
-					
+							_Affliction_Check()
 					
 					"Buff":
 						for Target in Effect.Targets:
@@ -114,7 +110,7 @@ func _Ability_Carry_Outer(Effects):
 			
 			
 			
-			_:
+			_: #We Can't access Callables Out of the Gate. Well I realized can do it via string through Effect[] But this is also cleaner I feel.
 				Effect.get_object().call(Effect.get_method())
 				
 				
@@ -164,15 +160,29 @@ func Hit_Classifier(Target, User):
 	elif Crit == true:
 		Hit_Status = 3
 	
-	return Hit_Status
+	else:
+		Hit_Status = 2
 	
+	return Hit_Status
+
 
 
 func _Attack_Damage(Target, Effect, User):
-	pass
 	
+	var Damage: int
+	if Effect.Attack > 0:
+		Damage = ((Effect.Base_Damage * User.Attack) / Target.Defence)
+		Target.Current_Hp -= Damage
 	
+	if Effect.Magic > 0:
+		Damage = ((Effect.Base_Damage * User.Magic) / Target.Resistance)
+		Target.Current_Hp -= Damage
 	
+	if Target.Dazed == true: #If dazed is true, this multiplies Damage by 2 for the speed break Check. Comes after Damage is Applied so no harm done.
+		Damage *=2
+	
+	Target.Initiative /= int(Damage/25)
+
 
 func _Healing(Effect, Targets):
 	for Target in Targets:
@@ -182,7 +192,31 @@ func _Buff(Effect,Target):
 	
 	for Status in Effect:
 			Target[Status] += Effect.get(Status)
+
+
+func _Affliction_Check():
+	pass
+
+func _Action_Select_Phase():
+	var Multi_Thread = Thread.new()
 	
+	add_child(Multi_Thread)
 	
+	for Combatant in Player_Characters:
+		Combatant.Action_Needs_Selected = true
 	
+	Multi_Thread.start(_Monster_Action_Select(Multi_Thread))
+
+func _Monster_Action_Select(The_Thread):
+	for Monster in Monsters:
+		pass
+	The_Thread.queue_free()
 	
+
+
+
+func _Action_Carry_Out_Phase():
+	for Combatant in Combatants:
+		_Ability_Carry_Outer(Combatant.Ability_Selected)
+		
+		

@@ -27,7 +27,6 @@ var Protect: int
 var Aegis: int
 var Barrier: int
 var Regen: int
-
 var Stunned: int
 var Winded: int
 var Dazed: int
@@ -38,6 +37,5 @@ var Cursed: int
 var Strength_Break: int
 var Magic_Break: int
 var Off_Balance: bool
-
 var Heal: int
 var Fatal: int
