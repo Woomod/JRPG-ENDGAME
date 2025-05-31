@@ -1,0 +1,26 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://x1mbfgik2c3u"]
+
+[ext_resource type="Texture2D" uid="uid://vbi543ag0p6e" path="res://Gfx/Tilesets/FG_Dark_Castle.png" id="1_h3w5r"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ynyng"]
+texture = ExtResource("1_h3w5r")
+3:31/0 = 0
+2:31/0 = 0
+1:31/0 = 0
+0:29/0 = 0
+1:29/0 = 0
+1:28/0 = 0
+2:28/0 = 0
+3:28/0 = 0
+3:29/0 = 0
+3:30/0 = 0
+2:30/0 = 0
+1:30/0 = 0
+4:29/0 = 0
+5:28/0 = 0
+5:29/0 = 0
+5:31/0 = 0
+5:30/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_ynyng")
